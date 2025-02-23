@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Alternative Spaces</title>
+    <style>
+        /* Custom properties */
+        :root {
+            --color-primary: #ff6b6b;
+            --color-secondary: #4ecdc4;
+            --color-accent: #ffe66d;
+            --color-dark: #2c2c2c;
+            --color-light: #f7f7f7;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        /* Header styles */
+        header {
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color-accent);
+            transform: skew(-20deg);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--color-primary);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--color-accent);
+            color: var(--color-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .space-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .space-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .space-category h2 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .space-category h2::before {
+            content: '⚡';
+            margin-right: 0.5rem;
+        }
+
+        .space-list {
+            list-style: none;
+        }
+
+        .space-list li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--color-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-secondary);
+        }
+
+        .space-name {
+            font-weight: bold;
+            color: var(--color-dark);
+            font-size: 1.2rem;
+        }
+
+        .space-description {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Quirky elements */
+        .quirky-circle {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .quirky-circle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+        }
+
+        .quirky-circle:nth-child(2) {
+            bottom: 30%;
+            right: 15%;
+        }
+
+        @media (max-width: 768px) {
+            .spaces-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Quirky background elements -->
+    <div class="quirky-circle"></div>
+    <div class="quirky-circle"></div>
+
+    <header>
+        <h1 class="title">London Alternative Spaces</h1>
+        <p>Discover the unconventional side of London</p>
+    </header>
+
+    <nav>
+        <a href="#thinking">Alt Thinking</a>
+        <a href="#doing">Alt Doing</a>
+        <a href="#living">Alt Living</a>
+    </nav>
+
+    <main class="container">
+        <div class="spaces-grid">
+            <!-- Alt Thinking/Learning Section -->
+            <section id="thinking" class="space-category">
+                <h2>Alt Thinking/Learning</h2>
+                <ul class="space-list">
+                    <li>
+                        <div class="space-name">Radical School of Thought</div>
+                        <div class="space-description">A space for alternative education and philosophical discourse. Weekly workshops on revolutionary ideas.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">The Knowledge Commons</div>
+                        <div class="space-description">Community-driven learning hub offering courses in everything from urban farming to quantum physics.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">Future Minds Lab</div>
+                        <div class="space-description">Experimental learning space focusing on emerging technologies and their social impact.</div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Alt Doing Section -->
+            <section id="doing" class="space-category">
+                <h2>Alt Doing</h2>
+                <ul class="space-list">
+                    <li>
+                        <div class="space-name">The Makers' Haven</div>
+                        <div class="space-description">Communal workshop equipped with tools and machinery for creative projects.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">Digital Commons</div>
+                        <div class="space-description">Open-source technology hub with 3D printers and electronic workstations.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">Green Works</div>
+                        <div class="space-description">Sustainable making space focused on eco-friendly materials and processes.</div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Alt Living Section -->
+            <section id="living" class="space-category">
+                <h2>Alt Living</h2>
+                <ul class="space-list">
+                    <li>
+                        <div class="space-name">The Collective Hub</div>
+                        <div class="space-description">Co-living space with shared gardens and community kitchen.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">EcoHaven</div>
+                        <div class="space-description">Sustainable living community with solar power and communal growing spaces.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">Creative Commons</div>
+                        <div class="space-description">Artist residence with shared studios and exhibition spaces.</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 London Alternative Spaces | Embracing the unconventional</p>
+    </footer>
+</body>
+</html>
