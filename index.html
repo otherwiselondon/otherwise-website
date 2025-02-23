@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otherwise London</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/2.15.0/mapbox-gl.js'></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/2.15.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         /* Custom properties */
         :root {
@@ -35,7 +37,7 @@
         /* Glitch effect */
         .glitch {
             position: relative;
-            text-shadow: 0.05em 0 0 var(--color-primary), 
+            text-shadow: 0.05em 0 0 var(--color-primary),
                          -0.025em -0.05em 0 var(--color-secondary),
                          0.025em 0.05em 0 var(--color-accent);
             animation: glitch 2s infinite;
@@ -43,12 +45,12 @@
 
         @keyframes glitch {
             0% {
-                text-shadow: 0.05em 0 0 var(--color-primary), 
+                text-shadow: 0.05em 0 0 var(--color-primary),
                             -0.025em -0.05em 0 var(--color-secondary),
                             0.025em 0.05em 0 var(--color-accent);
             }
             14% {
-                text-shadow: 0.05em 0 0 var(--color-primary), 
+                text-shadow: 0.05em 0 0 var(--color-primary),
                             -0.025em -0.05em 0 var(--color-secondary),
                             0.025em 0.05em 0 var(--color-accent);
             }
@@ -281,6 +283,65 @@
             letter-spacing: 2px;
         }
 
+        /* Map styles */
+        .map-container {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--color-dark);
+            border-radius: 15px;
+        }
+
+        .map-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid var(--color-primary);
+        }
+
+        .custom-marker {
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: var(--color-dark);
+            border: 1px solid var(--color-primary);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .mapboxgl-popup-content h3 {
+            margin: 0;
+            color: var(--color-light) !important;
+            font-size: 16px;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 0, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 255, 0);
+            }
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .spaces-grid {
@@ -385,6 +446,76 @@
                 </ul>
             </section>
         </div>
+
+        <!-- Map Section -->
+        <section class="map-container">
+            <h2 class="glitch">Find Alternative Spaces</h2>
+            <div id="map" class="map-wrapper"></div>
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyb2RvaHQiLCJhIjoiY203aHpnNjBuMTg0NDJsc2V3YnI4eW0wNiJ9.OomaiSJr53CtZY5dt2grIg';
+
+                const map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/dark-v11',
+                    center: [-0.118092, 51.509865], // London coordinates
+                    zoom: 11
+                });
+
+                // Sample location data
+                const locations = [
+                    {
+                        name: "Radical School of Thought",
+                        coordinates: [-0.076219, 51.523219], // Hackney
+                        type: "thinking"
+                    },
+                    {
+                        name: "The Makers' Haven",
+                        coordinates: [-0.099449, 51.533859], // Islington
+                        type: "doing"
+                    },
+                    {
+                        name: "Digital Commons",
+                        coordinates: [-0.141099, 51.515219], // Soho
+                        type: "doing"
+                    },
+                    {
+                        name: "The Collective Hub",
+                        coordinates: [-0.059987, 51.522547], // Bethnal Green
+                        type: "living"
+                    }
+                ];
+
+                // Add markers
+                locations.forEach(location => {
+                    // Create custom marker element
+                    const marker = document.createElement('div');
+                    marker.className = 'custom-marker';
+                    marker.style.width = '20px';
+                    marker.style.height = '20px';
+                    marker.style.background = location.type === 'thinking'
+                        ? '#ff00ff'
+                        : location.type === 'doing'
+                        ? '#00ffff'
+                        : '#ffff00';
+                    marker.style.borderRadius = '50%';
+                    marker.style.boxShadow = '0 0 10px currentColor';
+                    marker.style.animation = 'pulse 2s infinite';
+
+                    // Create popup
+                    const popup = new mapboxgl.Popup({ offset: 25 })
+                        .setHTML(`<h3 style="color: #000">${location.name}</h3>`);
+
+                    // Add marker to map
+                    new mapboxgl.Marker(marker)
+                        .setLngLat(location.coordinates)
+                        .setPopup(popup)
+                        .addTo(map);
+                });
+
+                // Add zoom and rotation controls
+                map.addControl(new mapboxgl.NavigationControl());
+            </script>
+        </section>
     </main>
 
     <footer>
