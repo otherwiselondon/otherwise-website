@@ -378,20 +378,20 @@
 
     <header>
         <h1 class="title glitch">Otherwise London</h1>
-        <p>Discover the city's alternative side</p>
+        <p>Discover London's alternative side</p>
     </header>
 
     <nav>
-        <a href="#thinking">Alt Thinking</a>
-        <a href="#doing">Alt Doing</a>
-        <a href="#living">Alt Living</a>
+        <a href="#learning">Learning</a>
+        <a href="#making">Making</a>
+        <a href="#living">Living</a>
     </nav>
 
     <main class="container">
         <div class="spaces-grid">
-            <!-- Alt Thinking/Learning Section -->
-            <section id="thinking" class="space-category">
-                <h2>Alt Thinking</h2>
+            <!-- Learning Section -->
+            <section id="learning" class="space-category">
+                <h2>Learning</h2>
                 <ul class="space-list">
                     <li>
                         <div class="space-name">Radical School of Thought</div>
@@ -408,9 +408,9 @@
                 </ul>
             </section>
 
-            <!-- Alt Doing Section -->
-            <section id="doing" class="space-category">
-                <h2>Alt Doing</h2>
+            <!-- Making Section -->
+            <section id="making" class="space-category">
+                <h2>Making</h2>
                 <ul class="space-list">
                     <li>
                         <div class="space-name">The Makers' Haven</div>
@@ -427,9 +427,9 @@
                 </ul>
             </section>
 
-            <!-- Alt Living Section -->
+            <!-- Living Section -->
             <section id="living" class="space-category">
-                <h2>Alt Living</h2>
+                <h2>Living</h2>
                 <ul class="space-list">
                     <li>
                         <div class="space-name">The Collective Hub</div>
@@ -466,17 +466,17 @@
                     {
                         name: "Radical School of Thought",
                         coordinates: [-0.076219, 51.523219], // Hackney
-                        type: "thinking"
+                        type: "learning"
                     },
                     {
                         name: "The Makers' Haven",
                         coordinates: [-0.099449, 51.533859], // Islington
-                        type: "doing"
+                        type: "making"
                     },
                     {
                         name: "Digital Commons",
                         coordinates: [-0.141099, 51.515219], // Soho
-                        type: "doing"
+                        type: "making"
                     },
                     {
                         name: "The Collective Hub",
@@ -492,9 +492,9 @@
                     marker.className = 'custom-marker';
                     marker.style.width = '20px';
                     marker.style.height = '20px';
-                    marker.style.background = location.type === 'thinking'
+                    marker.style.background = location.type === 'learning'
                         ? '#ff00ff'
-                        : location.type === 'doing'
+                        : location.type === 'making'
                         ? '#00ffff'
                         : '#ffff00';
                     marker.style.borderRadius = '50%';
