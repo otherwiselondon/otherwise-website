@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>London Alternative Spaces</title>
+    <title>Otherwise London</title>
     <style>
         /* Custom properties */
         :root {
-            --color-primary: #ff6b6b;
-            --color-secondary: #4ecdc4;
-            --color-accent: #ffe66d;
-            --color-dark: #2c2c2c;
-            --color-light: #f7f7f7;
+            --color-bg: #0a0a0a;
+            --color-primary: #ff00ff;
+            --color-secondary: #00ffff;
+            --color-accent: #ffff00;
+            --color-dark: #1a1a1a;
+            --color-light: #ffffff;
+            --gradient-1: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            --gradient-2: linear-gradient(-45deg, var(--color-secondary), var(--color-accent));
         }
 
         /* Base styles */
@@ -24,43 +27,84 @@
         body {
             font-family: 'Courier New', monospace;
             line-height: 1.6;
-            background-color: var(--color-light);
-            color: var(--color-dark);
+            background-color: var(--color-bg);
+            color: var(--color-light);
+            overflow-x: hidden;
+        }
+
+        /* Glitch effect */
+        .glitch {
+            position: relative;
+            text-shadow: 0.05em 0 0 var(--color-primary), 
+                         -0.025em -0.05em 0 var(--color-secondary),
+                         0.025em 0.05em 0 var(--color-accent);
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 var(--color-primary), 
+                            -0.025em -0.05em 0 var(--color-secondary),
+                            0.025em 0.05em 0 var(--color-accent);
+            }
+            14% {
+                text-shadow: 0.05em 0 0 var(--color-primary), 
+                            -0.025em -0.05em 0 var(--color-secondary),
+                            0.025em 0.05em 0 var(--color-accent);
+            }
+            15% {
+                text-shadow: -0.05em -0.025em 0 var(--color-primary),
+                            0.025em 0.025em 0 var(--color-secondary),
+                            -0.05em -0.05em 0 var(--color-accent);
+            }
+            49% {
+                text-shadow: -0.05em -0.025em 0 var(--color-primary),
+                            0.025em 0.025em 0 var(--color-secondary),
+                            -0.05em -0.05em 0 var(--color-accent);
+            }
+            50% {
+                text-shadow: 0.025em 0.05em 0 var(--color-primary),
+                            0.05em 0 0 var(--color-secondary),
+                            0 -0.05em 0 var(--color-accent);
+            }
+            99% {
+                text-shadow: 0.025em 0.05em 0 var(--color-primary),
+                            0.05em 0 0 var(--color-secondary),
+                            0 -0.05em 0 var(--color-accent);
+            }
+            100% {
+                text-shadow: -0.025em 0 0 var(--color-primary),
+                            -0.025em -0.025em 0 var(--color-secondary),
+                            -0.025em -0.05em 0 var(--color-accent);
+            }
         }
 
         /* Header styles */
         header {
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            background-color: var(--color-dark);
-            color: var(--color-light);
+            background: var(--color-dark);
+            position: relative;
+            overflow: hidden;
         }
 
         .title {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 8px;
             position: relative;
             display: inline-block;
-        }
-
-        .title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--color-accent);
-            transform: skew(-20deg);
+            mix-blend-mode: difference;
         }
 
         /* Navigation */
         nav {
-            background: var(--color-primary);
+            background: var(--color-dark);
             padding: 1rem;
             text-align: center;
+            border-top: 2px solid var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
         }
 
         nav a {
@@ -68,52 +112,81 @@
             text-decoration: none;
             margin: 0 1rem;
             padding: 0.5rem 1rem;
-            border-radius: 25px;
+            position: relative;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        nav a:hover {
-            background: var(--color-accent);
-            color: var(--color-dark);
-            transform: translateY(-2px);
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
         /* Main content */
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
 
         .spaces-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
             margin-top: 2rem;
         }
 
         .space-category {
-            background: white;
+            background: var(--color-dark);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .space-category:hover {
-            transform: translateY(-5px);
+        .space-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        .space-category:hover::before {
+            opacity: 0.2;
         }
 
         .space-category h2 {
             color: var(--color-primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 4px;
         }
 
         .space-category h2::before {
-            content: '⚡';
+            content: '↯';
             margin-right: 0.5rem;
+            color: var(--color-accent);
         }
 
         .space-list {
@@ -121,22 +194,75 @@
         }
 
         .space-list li {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: var(--color-light);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            border-left: 4px solid var(--color-secondary);
+            border-left: 4px solid;
+            border-image: var(--gradient-2) 1;
+            transition: transform 0.3s ease;
+        }
+
+        .space-list li:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .space-name {
             font-weight: bold;
-            color: var(--color-dark);
+            color: var(--color-secondary);
             font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
         .space-description {
-            color: #666;
-            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animated background elements */
+        .bg-element {
+            position: fixed;
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--color-primary);
+            top: 20%;
+            left: 10%;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        .bg-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: var(--color-secondary);
+            bottom: 30%;
+            right: 15%;
+            opacity: 0.1;
+            animation: float 15s infinite reverse;
+        }
+
+        .bg-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: var(--color-accent);
+            top: 60%;
+            left: 50%;
+            opacity: 0.1;
+            animation: float 25s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(100px, 100px) rotate(120deg); }
+            66% { transform: translate(-50px, 50px) rotate(240deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         /* Footer */
@@ -146,29 +272,16 @@
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
+            border-top: 2px solid var(--color-primary);
         }
 
-        /* Quirky elements */
-        .quirky-circle {
-            position: fixed;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: var(--color-secondary);
-            opacity: 0.1;
-            z-index: -1;
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
         }
 
-        .quirky-circle:nth-child(1) {
-            top: 20%;
-            left: 10%;
-        }
-
-        .quirky-circle:nth-child(2) {
-            bottom: 30%;
-            right: 15%;
-        }
-
+        /* Responsive design */
         @media (max-width: 768px) {
             .spaces-grid {
                 grid-template-columns: 1fr;
@@ -178,17 +291,33 @@
                 display: block;
                 margin: 0.5rem 0;
             }
+
+            .title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Cursor trail effect */
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
         }
     </style>
 </head>
 <body>
-    <!-- Quirky background elements -->
-    <div class="quirky-circle"></div>
-    <div class="quirky-circle"></div>
+    <!-- Animated background elements -->
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
+    <div class="bg-element"></div>
 
     <header>
-        <h1 class="title">London Alternative Spaces</h1>
-        <p>Discover the unconventional side of London</p>
+        <h1 class="title glitch">Otherwise London</h1>
+        <p>Discover the city's alternative side</p>
     </header>
 
     <nav>
@@ -259,7 +388,7 @@
     </main>
 
     <footer>
-        <p>© 2025 London Alternative Spaces | Embracing the unconventional</p>
+        <p>Copyleft 2025 Otherwise London | Embracing the unconventional</p>
     </footer>
 </body>
 </html>
