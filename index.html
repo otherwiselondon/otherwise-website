@@ -429,6 +429,11 @@
                         <div class="space-name"><a href="https://mosaic-london.super.site/">Mosaic</a></div>
                         <div class="space-description">On a mission to build a neighbourhood of friends that live in close proximity to each other and want to build a vibrant, supportive community.</div>
                     </li>
+                    <!-- <li>
+                        <div class="space-name"><a href="https://hallowed-cilantro-83b.notion.site/59OG-12945f38ebfb80b78cdee7edd104c788">The Olive Grove</a></div>
+                        <div class="space-description">An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people who are conscious of how we show up, how we relate, and how we leave our mark on the planet. We’re queer friendly and cultivate an interest in the arts / dance / craft / DIY, and regularly host salons, supper clubs and experiences at the house.</div>
+                    </li> -->
+
                 </ul>
             </section>
 
@@ -518,6 +523,16 @@
 
                 //Making
 
+                    // {
+                    //     name: "The Olive Grove",
+                    //     coordinates: [-0.1261204, 51.5689029],
+                    //     type: "living",
+                    //     description: "An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people.",
+                    //     googleMapLink: "https://maps.app.goo.gl/T7dPnjTKMLEaV8LdA"
+                    // },
+
+                //Making
+
                     {
                         name: "London Hackspace",
                         coordinates: [-0.2643077, 51.5279292],
@@ -560,11 +575,14 @@
                     marker.className = 'custom-marker';
                     marker.style.width = '20px';
                     marker.style.height = '20px';
-                    marker.style.background = location.type === 'associations'
-                        ? '#ff00ff'
+                    marker.style.background =
+                        location.type === 'space'
+                            ? 'var(--color-primary)'    // pink for space
                         : location.type === 'making'
-                        ? '#00ffff'
-                        : '#ffff00';
+                            ? 'var(--color-secondary)'  // blue for making
+                        : location.type === 'living'
+                            ? 'var(--color-accent)'     // yellow
+                        : 'var(--color-light)';     // white for associations
                     marker.style.borderRadius = '50%';
                     marker.style.boxShadow = '0 0 10px currentColor';
                     marker.style.animation = 'pulse 2s infinite';
