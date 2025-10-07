@@ -188,6 +188,7 @@
             background: var(--gradient-1);
             opacity: 0.1;
             transition: opacity 0.3s ease;
+            pointer-events: none;
         }
 
         .space-category:hover::before {
@@ -234,6 +235,17 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
+
+        .space-name a {
+            color: var(--color-secondary); /* Light blue */
+            text-decoration: none;
+            transition: text-decoration 0.3s, color 0.3s;
+        }
+
+        .space-name a:hover {
+            text-decoration: underline;
+             color: var(--color-secondary); /* Keeps the color on hover */
+        }        
 
         .space-description {
             color: rgba(255, 255, 255, 0.7);
@@ -400,68 +412,28 @@
     </header>
 
     <nav>
-        <a href="#learning">Learning</a>
-        <a href="#making">Making</a>
         <a href="#living">Living</a>
         <a href="#spaces">Spaces</a>
+        <a href="#making">Making</a>
+        <a href="#associations">Associations</a>
+        
     </nav>
 
     <main class="container">
         <div class="spaces-grid">
-            <!-- Learning Section -->
-            <section id="learning" class="space-category">
-                <h2>Learning</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name">Radical School of Thought</div>
-                        <div class="space-description">A space for alternative education and philosophical discourse. Weekly workshops on revolutionary ideas.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">The Knowledge Commons</div>
-                        <div class="space-description">Community-driven learning hub offering courses in everything from urban farming to quantum physics.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">Future Minds Lab</div>
-                        <div class="space-description">Experimental learning space focusing on emerging technologies and their social impact.</div>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Making Section -->
-            <section id="making" class="space-category">
-                <h2>Making</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name">The Makers' Haven</div>
-                        <div class="space-description">Communal workshop equipped with tools and machinery for creative projects.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">Digital Commons</div>
-                        <div class="space-description">Open-source technology hub with 3D printers and electronic workstations.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">Green Works</div>
-                        <div class="space-description">Sustainable making space focused on eco-friendly materials and processes.</div>
-                    </li>
-                </ul>
-            </section>
-
             <!-- Living Section -->
             <section id="living" class="space-category">
                 <h2>Living</h2>
                 <ul class="space-list">
                     <li>
-                        <div class="space-name">The Collective Hub</div>
-                        <div class="space-description">Co-living space with shared gardens and community kitchen.</div>
+                        <div class="space-name"><a href="https://mosaic-london.super.site/">Mosaic</a></div>
+                        <div class="space-description">On a mission to build a neighbourhood of friends that live in close proximity to each other and want to build a vibrant, supportive community.</div>
                     </li>
-                    <li>
-                        <div class="space-name">EcoHaven</div>
-                        <div class="space-description">Sustainable living community with solar power and communal growing spaces.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">Creative Commons</div>
-                        <div class="space-description">Artist residence with shared studios and exhibition spaces.</div>
-                    </li>
+                    <!-- <li>
+                        <div class="space-name"><a href="https://hallowed-cilantro-83b.notion.site/59OG-12945f38ebfb80b78cdee7edd104c788">The Olive Grove</a></div>
+                        <div class="space-description">An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people who are conscious of how we show up, how we relate, and how we leave our mark on the planet. We’re queer friendly and cultivate an interest in the arts / dance / craft / DIY, and regularly host salons, supper clubs and experiences at the house.</div>
+                    </li> -->
+
                 </ul>
             </section>
 
@@ -471,20 +443,65 @@
                 <h2>Spaces</h2>
                 <ul class="space-list">
                     <li>
-                        <div class="space-name">The Collective Hub</div>
-                        <div class="space-description">Co-living space with shared gardens and community kitchen.</div>
+                        <div class="space-name">
+                            <a href="https://www.londonnightcafe.co.uk/">London Night Cafe</a>
+                        </div>
+                        <div class="space-description">A small, independent place to do calm things at night. Bring a friend, a date, some work, and/or a good book and settle in for a cozy evening in the stimulating and futuristic space. There is wifi, complimentary tea and coffee (until 11 pm), and lots of comfortable seating.</div>
                     </li>
                     <li>
-                        <div class="space-name">EcoHaven</div>
-                        <div class="space-description">Sustainable living community with solar power and communal growing spaces.</div>
+                        <div class="space-name">
+                            <a href="https://space4.tech/">SPACE4</a>
+                        </div>
+                        <div class="space-description">A physical space for cooperatives or people interested in progressive tech to gather and collaborate.</div>
                     </li>
                     <li>
-                        <div class="space-name">Creative Commons</div>
-                        <div class="space-description">Artist residence with shared studios and exhibition spaces.</div>
+                        <div class="space-name">
+                            <a href="https://houseofannetta.org/home">House of Annetta</a>
+                        </div>
+                        <div class="space-description">A project to repair and imagine the former home of Annetta Pedretti, in Spitalfields - East London. She was a cybernetician and trained architectural designer, and the building became her life-work from 1980 until her death in 2018.</div>
                     </li>
                 </ul>
             </section>
-            
+
+            <!-- Making Section -->
+            <section id="making" class="space-category">
+                <h2>Making</h2>
+                <ul class="space-list">
+                    <li>
+                        <div class="space-name">
+                            <a href="https://london.hackspace.org.uk/">London Hackspace</a>
+                        </div>
+                        <div class="space-description">A non-profit hackerspace in London: a community-run workshop where people come to share tools and knowledge.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">
+                            <a href="https://communitycycleworks.co.uk/about-us/">Community Cycleworks</a>
+                        </div>
+                        <div class="space-description">Communal bicycle workshop for young people, which gives them a safe space to learn repair skills for themselves, use second hand parts to keep costs low, and an exciting programme of varied cycling activities.</div>
+                    </li>
+                </ul>
+            </section>
+
+                        
+            <!-- Associations / Learning Section -->
+            <section id="associations" class="space-category">
+                <h2>Associations</h2>
+                <ul class="space-list">
+                    <li>
+                        <div class="space-name">
+                            <a href="kin.coop">kin.coop</a>
+                        </div>
+                        <div class="space-description">Kin is the UK's only non-profit platform for online saving groups.</div>
+                    </li>
+                    <li>
+                        <div class="space-name">
+                            <a href="https://antiuniversity.org/about/">Antiuniversity Now</a>
+                        </div>
+                        <div class="space-description">A collaborative experiment to challenge institutionalised education, access to learning and the mechanism of knowledge creation and distribution.</div>
+                    </li>
+                </ul>
+            </section>
+
         </div>
 
         <!-- Map Section -->
@@ -497,31 +514,57 @@
                 const map = new mapboxgl.Map({
                     container: 'map',
                     style: 'mapbox://styles/mapbox/dark-v11',
-                    center: [-0.118092, 51.509865], // London coordinates
+                    center: [-0.18092, 51.52865], // London coordinates
                     zoom: 11
                 });
 
                 // Sample location data
                 const locations = [
+
+                //Making
+
+                    // {
+                    //     name: "The Olive Grove",
+                    //     coordinates: [-0.1261204, 51.5689029],
+                    //     type: "living",
+                    //     description: "An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people.",
+                    //     googleMapLink: "https://maps.app.goo.gl/T7dPnjTKMLEaV8LdA"
+                    // },
+
+                //Making
+
                     {
-                        name: "Radical School of Thought",
-                        coordinates: [-0.076219, 51.523219], // Hackney
-                        type: "learning"
+                        name: "London Hackspace",
+                        coordinates: [-0.2643077, 51.5279292],
+                        type: "making",
+                        description: "A community-run workshop where people come to share tools and knowledge. ",
+                        googleMapLink: "https://maps.app.goo.gl/fjCpGbCAYstKbyui8"
                     },
+
+                // Places
+
                     {
-                        name: "The Makers' Haven",
-                        coordinates: [-0.099449, 51.533859], // Islington
-                        type: "making"
+                        name: "London Night Cafe",
+                        coordinates: [-0.0758891, 51.5160337],
+                        type: "space",
+                        description: "A small, independent place to do calm things at night",
+                        googleMapLink: "https://maps.app.goo.gl/Pxxaka9vgWm4QUuX9"
                     },
+
                     {
-                        name: "Digital Commons",
-                        coordinates: [-0.141099, 51.515219], // Soho
-                        type: "making"
+                        name: "SPACE4",
+                        coordinates: [-0.1105669, 51.5645787],
+                        type: "space",
+                        description: "A small, independent place to do calm things at night",
+                        googleMapLink: "https://maps.app.goo.gl/hU7p3Ret8eVS89aJ8"
                     },
+
                     {
-                        name: "The Collective Hub",
-                        coordinates: [-0.059987, 51.522547], // Bethnal Green
-                        type: "living"
+                        name: "House of Annetta",
+                        coordinates: [-0.0747367, 51.5198567],
+                        type: "space",
+                        description: "A project to repair and imagine the former home of Annetta Pedretti",
+                        googleMapLink: "https://maps.app.goo.gl/5xiEaHRzbPfzXCmr5"
                     }
                 ];
 
@@ -532,19 +575,25 @@
                     marker.className = 'custom-marker';
                     marker.style.width = '20px';
                     marker.style.height = '20px';
-                    marker.style.background = location.type === 'learning'
-                        ? '#ff00ff'
+                    marker.style.background =
+                        location.type === 'space'
+                            ? 'var(--color-primary)'    // pink for space
                         : location.type === 'making'
-                        ? '#00ffff'
-                        : '#ffff00';
+                            ? 'var(--color-secondary)'  // blue for making
+                        : location.type === 'living'
+                            ? 'var(--color-accent)'     // yellow
+                        : 'var(--color-light)';     // white for associations
                     marker.style.borderRadius = '50%';
                     marker.style.boxShadow = '0 0 10px currentColor';
                     marker.style.animation = 'pulse 2s infinite';
 
                     // Create popup
                     const popup = new mapboxgl.Popup({ offset: 25 })
-                        .setHTML(`<h3 style="color: #000">${location.name}</h3>`);
-
+                        .setHTML(`
+                            <h3 style="color: #fff">${location.name}</h3>
+                            <p style="color: #ccc; font-size: 0.95em;">${location.description}</p>
+                            <a href="${location.googleMapLink}" target="_blank" style="color: #00ffff; text-decoration: underline;">View on Google Maps</a>
+                        `);
                     // Add marker to map
                     new mapboxgl.Marker(marker)
                         .setLngLat(location.coordinates)
