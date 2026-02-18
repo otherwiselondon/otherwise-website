@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otherwise London</title>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/2.15.0/mapbox-gl.js'></script>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/mapbox-gl/2.15.0/mapbox-gl.css' rel='stylesheet'>
     <style>
         /* Custom properties */
         :root {
@@ -372,6 +372,106 @@
             }
         }
 
+        /* Contribute section */
+        .contribute-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--color-dark);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+        }
+
+        .contribute-section h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .contribute-section h2::before {
+            content: '↯';
+            margin-right: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        .contribute-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .contribute-steps {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .contribute-steps li {
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid;
+            border-image: var(--gradient-1) 1;
+            color: rgba(255, 255, 255, 0.85);
+            counter-increment: step-counter;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contribute-steps li::before {
+            content: counter(step-counter);
+            color: var(--color-accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 1.5rem;
+        }
+
+        .contribute-steps {
+            counter-reset: step-counter;
+        }
+
+        .contribute-steps code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--color-secondary);
+            font-size: 0.9em;
+        }
+
+        .contribute-section a {
+            color: var(--color-secondary);
+            text-decoration: none;
+        }
+
+        .contribute-section a:hover {
+            text-decoration: underline;
+        }
+
+        .contribute-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .contribute-cta:hover {
+            background: var(--color-primary);
+            color: var(--color-bg);
+            text-decoration: none !important;
+        }
+
         /* Responsive design */
         @media (max-width: 768px) {
             .spaces-grid {
@@ -416,7 +516,7 @@
         <a href="#spaces">Spaces</a>
         <a href="#making">Making</a>
         <a href="#associations">Associations</a>
-        
+        <a href="#contribute">Contribute</a>
     </nav>
 
     <main class="container">
@@ -424,227 +524,255 @@
             <!-- Living Section -->
             <section id="living" class="space-category">
                 <h2>Living</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name"><a href="https://hallowed-cilantro-83b.notion.site/59OG-12945f38ebfb80b78cdee7edd104c788">The Olive Grove</a></div>
-                        <div class="space-description">An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people who are conscious of how we show up, how we relate, and how we leave our mark on the planet. We’re queer friendly and cultivate an interest in the arts / dance / craft / DIY, and regularly host salons, supper clubs and experiences at the house.</div>
-                    </li>
-                    <li>
-                        <div class="space-name"><a href="https://docs.google.com/document/d/1URyMqpX541z8qR1ye7nKikNkLhISAf9niEACJoRqfTA/edit?pli=1&tab=t.0">The Cloud</a></div>
-                        <div class="space-description">Intentional community flat next to Hampstead Heath with weekly house practice and shared vegan meals. Our shared values include: reducing suffering, deep connections, and mindfulness</div>
-                    </li>
-                    <li>
-                        <div class="space-name"><a href="https://mosaic-london.super.site/">Mosaic</a></div>
-                        <div class="space-description">On a mission to build a neighbourhood of friends that live in close proximity to each other and want to build a vibrant, supportive community.</div>
-                    </li>
-                    <!-- <li>
-                        <div class="space-name"><a href="https://hallowed-cilantro-83b.notion.site/59OG-12945f38ebfb80b78cdee7edd104c788">The Olive Grove</a></div>
-                        <div class="space-description">An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people who are conscious of how we show up, how we relate, and how we leave our mark on the planet. We’re queer friendly and cultivate an interest in the arts / dance / craft / DIY, and regularly host salons, supper clubs and experiences at the house.</div>
-                    </li> -->
-
-                </ul>
+                <ul class="space-list" id="living-list"></ul>
             </section>
 
-
-                   <!-- Spaces Section -->
+            <!-- Spaces Section -->
             <section id="spaces" class="space-category">
                 <h2>Spaces</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name">
-                            <a href="https://www.londonnightcafe.co.uk/">London Night Cafe</a>
-                        </div>
-                        <div class="space-description">A small, independent place to do calm things at night. Bring a friend, a date, some work, and/or a good book and settle in for a cozy evening in the stimulating and futuristic space. There is wifi, complimentary tea and coffee (until 11 pm), and lots of comfortable seating.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="https://space4.tech/">SPACE4</a>
-                        </div>
-                        <div class="space-description">A physical space for cooperatives or people interested in progressive tech to gather and collaborate.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="https://houseofannetta.org/home">House of Annetta</a>
-                        </div>
-                        <div class="space-description">A project to repair and imagine the former home of Annetta Pedretti, in Spitalfields - East London. She was a cybernetician and trained architectural designer, and the building became her life-work from 1980 until her death in 2018.</div>
-                    </li>
-                </ul>
+                <ul class="space-list" id="spaces-list"></ul>
             </section>
 
             <!-- Making Section -->
             <section id="making" class="space-category">
                 <h2>Making</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name">
-                            <a href="https://london.hackspace.org.uk/">London Hackspace</a>
-                        </div>
-                        <div class="space-description">A non-profit hackerspace in London: a community-run workshop where people come to share tools and knowledge.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="https://southlondonmakerspace.org/">South London Makerspace</a>
-                        </div>
-                        <div class="space-description">A non-profit social community workshop in Herne Hill offering facilities for laser cutting, metalwork, sewing, and bike maintenance. Members share tools and knowledge in a supportive community environment.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="https://communitycycleworks.co.uk/about-us/">Community Cycleworks</a>
-                        </div>
-                        <div class="space-description">Communal bicycle workshop for young people, which gives them a safe space to learn repair skills for themselves, use second hand parts to keep costs low, and an exciting programme of varied cycling activities.</div>
-                    </li>
-                </ul>
+                <ul class="space-list" id="making-list"></ul>
             </section>
 
-                        
-            <!-- Associations / Learning Section -->
+            <!-- Associations Section -->
             <section id="associations" class="space-category">
                 <h2>Associations</h2>
-                <ul class="space-list">
-                    <li>
-                        <div class="space-name">
-                            <a href="https://newspeak.house/">Newspeak House</a>
-                        </div>
-                        <div class="space-description">Hosts a busy calendar of events at its campus in central London, as well as a one year course for emerging leaders in the field.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="kin.coop">kin.coop</a>
-                        </div>
-                        <div class="space-description">Kin is the UK's only non-profit platform for online saving groups.</div>
-                    </li>
-                    <li>
-                        <div class="space-name">
-                            <a href="https://antiuniversity.org/about/">Antiuniversity Now</a>
-                        </div>
-                        <div class="space-description">A collaborative experiment to challenge institutionalised education, access to learning and the mechanism of knowledge creation and distribution.</div>
-                    </li>
-                </ul>
+                <ul class="space-list" id="associations-list"></ul>
             </section>
-
         </div>
 
         <!-- Map Section -->
         <section class="map-container">
             <h2 class="glitch">Find Alternative Spaces</h2>
             <div id="map" class="map-wrapper"></div>
-            <script>
-                mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyb2RvaHQiLCJhIjoiY203aHpnNjBuMTg0NDJsc2V3YnI4eW0wNiJ9.OomaiSJr53CtZY5dt2grIg';
+        </section>
 
-                const map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/dark-v11',
-                    center: [-0.18092, 51.52865], // London coordinates
-                    zoom: 11
-                });
-
-                // Sample location data
-                const locations = [
-
-                // Living
-                    {
-                        name: "The Olive Grove",
-                        coordinates: [-0.1261204, 51.5689029],
-                        type: "living",
-                        description: "An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people.",
-                        googleMapLink: "https://maps.app.goo.gl/T7dPnjTKMLEaV8LdA"
-                    },
-                
-                //Making
-
-                    {
-                        name: "London Hackspace",
-                        coordinates: [-0.2643077, 51.5279292],
-                        type: "making",
-                        description: "A community-run workshop where people come to share tools and knowledge. ",
-                        googleMapLink: "https://maps.app.goo.gl/fjCpGbCAYstKbyui8"
-                    },
-
-                    {
-                        name: "South London Makerspace",
-                        coordinates: [-0.10088327574086242, 51.45188794361722],
-                        type: "making",
-                        description: "A non-profit social community workshop offering facilities for laser cutting, metalwork, sewing, and bike maintenance.",
-                        googleMapLink: "https://maps.app.goo.gl/nKqUYJqx9BQHQWKV6"
-                    },
-
-                // Places
-
-                    {
-                        name: "London Night Cafe",
-                        coordinates: [-0.0758891, 51.5160337],
-                        type: "space",
-                        description: "A small, independent place to do calm things at night",
-                        googleMapLink: "https://maps.app.goo.gl/Pxxaka9vgWm4QUuX9"
-                    },
-
-                    {
-                        name: "SPACE4",
-                        coordinates: [-0.1105669, 51.5645787],
-                        type: "space",
-                        description: "A small, independent place to do calm things at night",
-                        googleMapLink: "https://maps.app.goo.gl/hU7p3Ret8eVS89aJ8"
-                    },
-
-                    {
-                        name: "House of Annetta",
-                        coordinates: [-0.0747367, 51.5198567],
-                        type: "space",
-                        description: "A project to repair and imagine the former home of Annetta Pedretti",
-                        googleMapLink: "https://maps.app.goo.gl/5xiEaHRzbPfzXCmr5"
-                    },
-
-                // Associations
-
-                    {
-                        name: "Newspeak House",
-                        coordinates: [-0.0739205, 51.5251695],
-                        type: "associations",
-                        description: "A small, independent place to do calm things at night",
-                        googleMapLink: "https://maps.app.goo.gl/VfjEnVjoWn4V4FAz6"
-                    }
-                ];
-
-                // Add markers
-                locations.forEach(location => {
-                    // Create custom marker element
-                    const marker = document.createElement('div');
-                    marker.className = 'custom-marker';
-                    marker.style.width = '20px';
-                    marker.style.height = '20px';
-                    marker.style.background = location.type === 'associations'
-                        ? '#ff00ff'
-                        : location.type === 'making'
-                            ? 'var(--color-secondary)'  // blue for making
-                        : location.type === 'living'
-                            ? 'var(--color-accent)'     // yellow
-                        : 'var(--color-light)';     // white for associations
-                    marker.style.borderRadius = '50%';
-                    marker.style.boxShadow = '0 0 10px currentColor';
-                    marker.style.animation = 'pulse 2s infinite';
-
-                    // Create popup
-                    const popup = new mapboxgl.Popup({ offset: 25 })
-                        .setHTML(`
-                            <h3 style="color: #fff">${location.name}</h3>
-                            <p style="color: #ccc; font-size: 0.95em;">${location.description}</p>
-                            <a href="${location.googleMapLink}" target="_blank" style="color: #00ffff; text-decoration: underline;">View on Google Maps</a>
-                        `);
-                    // Add marker to map
-                    new mapboxgl.Marker(marker)
-                        .setLngLat(location.coordinates)
-                        .setPopup(popup)
-                        .addTo(map);
-                });
-
-                // Add zoom and rotation controls
-                map.addControl(new mapboxgl.NavigationControl());
-            </script>
+        <!-- Contribute Section -->
+        <section id="contribute" class="contribute-section">
+            <h2>Contribute</h2>
+            <p>
+                Otherwise London is an open, community-maintained project. If you know a place, space, or group that belongs here,
+                you can add it directly by opening a pull request on GitHub.
+            </p>
+            <p>
+                The entire site is a single HTML file: <code>index.html</code>.
+                All place data is stored in a single JavaScript <code>locations</code> array that powers both the lists and the map.
+                Adding a new entry means adding an object to this array with the place's details.
+            </p>
+            <ol class="contribute-steps">
+                <li>
+                    <span>Fork the repository on GitHub: <a href="https://github.com/otherwiselondon/otherwise-website" target="_blank">otherwiselondon/otherwise-website</a></span>
+                </li>
+                <li>
+                    <span>Open <code>index.html</code> and find the <code>locations</code> array in the JavaScript section near the bottom.</span>
+                </li>
+                <li>
+                    <span>Add a new location object with: <code>name</code>, <code>url</code>, <code>coordinates</code> [lng, lat], <code>type</code> (living, spaces, making, or associations), <code>description</code>, and <code>googleMapLink</code>.</span>
+                </li>
+                <li>
+                    <span>You can omit the <code>coordinates</code> field and the place will still appear in the list but not on the map.</span>
+                </li>
+                <li>
+                    <span>Commit your changes and open a pull request. Describe the place briefly in the PR description.</span>
+                </li>
+            </ol>
+            <a class="contribute-cta" href="https://github.com/otherwiselondon/otherwise-website" target="_blank">View on GitHub</a>
         </section>
     </main>
 
     <footer>
         <p>Copyleft 2025 Otherwise London | Embracing the unconventional</p>
     </footer>
+
+    <script>
+        // All place data in one location
+        const locations = [
+            // Living
+            {
+                name: "The Olive Grove",
+                url: "https://hallowed-cilantro-83b.notion.site/59OG-12945f38ebfb80b78cdee7edd104c788",
+                coordinates: [-0.1261204, 51.5689029],
+                type: "living",
+                description: "An intentional community in Finsbury park, with a diverse mix of musical, physically active, social-movement engaged, curious, creative, action-oriented people who are conscious of how we show up, how we relate, and how we leave our mark on the planet. We're queer friendly and cultivate an interest in the arts / dance / craft / DIY, and regularly host salons, supper clubs and experiences at the house.",
+                googleMapLink: "https://maps.app.goo.gl/T7dPnjTKMLEaV8LdA"
+            },
+            {
+                name: "The Cloud",
+                url: "https://docs.google.com/document/d/1URyMqpX541z8qR1ye7nKikNkLhISAf9niEACJoRqfTA/edit?pli=1&tab=t.0",
+                coordinates: [-0.165, 51.560],
+                type: "living",
+                description: "Intentional community flat next to Hampstead Heath with weekly house practice and shared vegan meals. Our shared values include: reducing suffering, deep connections, and mindfulness",
+                googleMapLink: "https://maps.google.com"
+            },
+            {
+                name: "Mosaic",
+                url: "https://mosaic-london.super.site/",
+                coordinates: null,
+                type: "living",
+                description: "On a mission to build a neighbourhood of friends that live in close proximity to each other and want to build a vibrant, supportive community.",
+                googleMapLink: "https://maps.google.com"
+            },
+
+            // Spaces
+            {
+                name: "London Night Cafe",
+                url: "https://www.londonnightcafe.co.uk/",
+                coordinates: [-0.0758891, 51.5160337],
+                type: "spaces",
+                description: "A small, independent place to do calm things at night. Bring a friend, a date, some work, and/or a good book and settle in for a cozy evening in the stimulating and futuristic space. There is wifi, complimentary tea and coffee (until 11 pm), and lots of comfortable seating.",
+                googleMapLink: "https://maps.app.goo.gl/Pxxaka9vgWm4QUuX9"
+            },
+            {
+                name: "SPACE4",
+                url: "https://space4.tech/",
+                coordinates: [-0.1105669, 51.5645787],
+                type: "spaces",
+                description: "A physical space for cooperatives or people interested in progressive tech to gather and collaborate.",
+                googleMapLink: "https://maps.app.goo.gl/hU7p3Ret8eVS89aJ8"
+            },
+            {
+                name: "House of Annetta",
+                url: "https://houseofannetta.org/home",
+                coordinates: [-0.0747367, 51.5198567],
+                type: "spaces",
+                description: "A project to repair and imagine the former home of Annetta Pedretti, in Spitalfields - East London. She was a cybernetician and trained architectural designer, and the building became her life-work from 1980 until her death in 2018.",
+                googleMapLink: "https://maps.app.goo.gl/5xiEaHRzbPfzXCmr5"
+            },
+
+            // Making
+            {
+                name: "London Hackspace",
+                url: "https://london.hackspace.org.uk/",
+                coordinates: [-0.2643077, 51.5279292],
+                type: "making",
+                description: "A non-profit hackerspace in London: a community-run workshop where people come to share tools and knowledge.",
+                googleMapLink: "https://maps.app.goo.gl/fjCpGbCAYstKbyui8"
+            },
+            {
+                name: "South London Makerspace",
+                url: "https://southlondonmakerspace.org/",
+                coordinates: [-0.10088327574086242, 51.45188794361722],
+                type: "making",
+                description: "A non-profit social community workshop in Herne Hill offering facilities for laser cutting, metalwork, sewing, and bike maintenance. Members share tools and knowledge in a supportive community environment.",
+                googleMapLink: "https://maps.app.goo.gl/nKqUYJqx9BQHQWKV6"
+            },
+            {
+                name: "Community Cycleworks",
+                url: "https://communitycycleworks.co.uk/about-us/",
+                coordinates: null,
+                type: "making",
+                description: "Communal bicycle workshop for young people, which gives them a safe space to learn repair skills for themselves, use second hand parts to keep costs low, and an exciting programme of varied cycling activities.",
+                googleMapLink: "https://maps.google.com"
+            },
+
+            // Associations
+            {
+                name: "Newspeak House",
+                url: "https://newspeak.house/",
+                coordinates: [-0.0739205, 51.5251695],
+                type: "associations",
+                description: "Hosts a busy calendar of events at its campus in central London, as well as a one year course for emerging leaders in the field.",
+                googleMapLink: "https://maps.app.goo.gl/VfjEnVjoWn4V4FAz6"
+            },
+            {
+                name: "kin.coop",
+                url: "https://kin.coop",
+                coordinates: null,
+                type: "associations",
+                description: "Kin is the UK's only non-profit platform for online saving groups.",
+                googleMapLink: "https://maps.google.com"
+            },
+            {
+                name: "Antiuniversity Now",
+                url: "https://antiuniversity.org/about/",
+                coordinates: null,
+                type: "associations",
+                description: "A collaborative experiment to challenge institutionalised education, access to learning and the mechanism of knowledge creation and distribution.",
+                googleMapLink: "https://maps.google.com"
+            }
+        ];
+
+        // Function to render location lists dynamically
+        function renderLocationLists() {
+            const categories = {
+                living: document.getElementById('living-list'),
+                spaces: document.getElementById('spaces-list'),
+                making: document.getElementById('making-list'),
+                associations: document.getElementById('associations-list')
+            };
+
+            // Clear existing content
+            Object.values(categories).forEach(list => list.innerHTML = '');
+
+            // Group locations by type and render
+            locations.forEach(location => {
+                const list = categories[location.type];
+                if (list) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <div class="space-name"><a href="${location.url}" target="_blank">${location.name}</a></div>
+                        <div class="space-description">${location.description}</div>
+                    `;
+                    list.appendChild(li);
+                }
+            });
+        }
+
+        // Render the lists when DOM is ready
+        document.addEventListener('DOMContentLoaded', renderLocationLists);
+
+        // Initialize Mapbox map
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2lyb2RvaHQiLCJhIjoiY203aHpnNjBuMTg0NDJsc2V3YnI4eW0wNiJ9.OomaiSJr53CtZY5dt2grIg';
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/dark-v11',
+            center: [-0.12092, 51.52065],
+            zoom: 11
+        });
+
+        // Add markers for locations with coordinates
+        locations.forEach(location => {
+            if (!location.coordinates) return;
+
+            // Create custom marker element
+            const marker = document.createElement('div');
+            marker.className = 'custom-marker';
+            marker.style.width = '20px';
+            marker.style.height = '20px';
+            marker.style.background = location.type === 'associations'
+                ? '#ff00ff'
+                : location.type === 'making'
+                    ? 'var(--color-secondary)'  // blue for making
+                : location.type === 'living'
+                    ? 'var(--color-accent)'     // yellow for living
+                : 'var(--color-light)';     // white for spaces
+            marker.style.borderRadius = '50%';
+            marker.style.boxShadow = '0 0 10px currentColor';
+            marker.style.animation = 'pulse 2s infinite';
+
+            // Create popup
+            const popup = new mapboxgl.Popup({ offset: 25 })
+                .setHTML(`
+                    <h3 style="color: #fff">${location.name}</h3>
+                    <p style="color: #ccc; font-size: 0.95em;">${location.description.substring(0, 100)}${location.description.length > 100 ? '...' : ''}</p>
+                    <a href="${location.googleMapLink}" target="_blank" style="color: #00ffff; text-decoration: underline;">View on Google Maps</a>
+                `);
+
+            // Add marker to map
+            new mapboxgl.Marker(marker)
+                .setLngLat(location.coordinates)
+                .setPopup(popup)
+                .addTo(map);
+        });
+
+        // Add zoom and rotation controls
+        map.addControl(new mapboxgl.NavigationControl());
+    </script>
 </body>
 </html>
