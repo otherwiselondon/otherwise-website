@@ -586,7 +586,7 @@
     </main>
 
     <footer>
-        <p>Copyleft 2025 Otherwise London | Embracing the unconventional</p>
+        <p>Copyleft 2026 Otherwise London | Embracing the unconventional</p>
     </footer>
 
     <script>
@@ -607,7 +607,7 @@
                 coordinates: [-0.165, 51.560],
                 type: "living",
                 description: "Intentional community flat next to Hampstead Heath with weekly house practice and shared vegan meals. Our shared values include: reducing suffering, deep connections, and mindfulness",
-                googleMapLink: "https://maps.google.com"
+                googleMapLink: null
             },
             {
                 name: "Mosaic",
@@ -615,7 +615,7 @@
                 coordinates: null,
                 type: "living",
                 description: "On a mission to build a neighbourhood of friends that live in close proximity to each other and want to build a vibrant, supportive community.",
-                googleMapLink: "https://maps.google.com"
+                googleMapLink: null
             },
 
             // Spaces
@@ -667,7 +667,7 @@
                 coordinates: null,
                 type: "making",
                 description: "Communal bicycle workshop for young people, which gives them a safe space to learn repair skills for themselves, use second hand parts to keep costs low, and an exciting programme of varied cycling activities.",
-                googleMapLink: "https://maps.google.com"
+                googleMapLink: null
             },
 
             // Associations
@@ -685,7 +685,7 @@
                 coordinates: null,
                 type: "associations",
                 description: "Kin is the UK's only non-profit platform for online saving groups.",
-                googleMapLink: "https://maps.google.com"
+                googleMapLink: null
             },
             {
                 name: "Antiuniversity Now",
@@ -693,7 +693,7 @@
                 coordinates: null,
                 type: "associations",
                 description: "A collaborative experiment to challenge institutionalised education, access to learning and the mechanism of knowledge creation and distribution.",
-                googleMapLink: "https://maps.google.com"
+                googleMapLink: null
             }
         ];
 
@@ -761,7 +761,7 @@
                 .setHTML(`
                     <h3 style="color: #fff">${location.name}</h3>
                     <p style="color: #ccc; font-size: 0.95em;">${location.description.substring(0, 100)}${location.description.length > 100 ? '...' : ''}</p>
-                    <a href="${location.googleMapLink}" target="_blank" style="color: #00ffff; text-decoration: underline;">View on Google Maps</a>
+                    ${location.googleMapLink ? `<a href="${location.googleMapLink}" target="_blank" style="color: #00ffff; text-decoration: underline;">View on Google Maps</a>` : ''}
                 `);
 
             // Add marker to map
