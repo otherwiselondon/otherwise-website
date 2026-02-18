@@ -372,8 +372,8 @@
             }
         }
 
-        /* Contribute section */
-        .contribute-section {
+        /* Callout sections */
+        .callout-section {
             margin-top: 4rem;
             padding: 2rem;
             background: var(--color-dark);
@@ -381,7 +381,7 @@
             border: 1px solid rgba(255, 0, 255, 0.3);
         }
 
-        .contribute-section h2 {
+        .callout-section h2 {
             color: var(--color-primary);
             font-size: 2rem;
             text-transform: uppercase;
@@ -389,13 +389,13 @@
             margin-bottom: 1rem;
         }
 
-        .contribute-section h2::before {
+        .callout-section h2::before {
             content: '↯';
             margin-right: 0.5rem;
             color: var(--color-accent);
         }
 
-        .contribute-section p {
+        .callout-section p {
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 1rem;
             max-width: 800px;
@@ -441,16 +441,16 @@
             font-size: 0.9em;
         }
 
-        .contribute-section a {
+        .callout-section a {
             color: var(--color-secondary);
             text-decoration: none;
         }
 
-        .contribute-section a:hover {
+        .callout-section a:hover {
             text-decoration: underline;
         }
 
-        .contribute-cta {
+        .callout-cta {
             display: inline-block;
             margin-top: 1rem;
             padding: 0.75rem 1.5rem;
@@ -465,11 +465,11 @@
             border-radius: 4px;
             transition: background 0.3s ease, color 0.3s ease;
         }
-
-        .contribute-cta:hover {
+        .callout-cta:hover {
             background: var(--color-primary);
             color: var(--color-bg);
             text-decoration: none !important;
+            font-weight: bold;
         }
 
         /* Responsive design */
@@ -517,6 +517,7 @@
         <a href="#making">Making</a>
         <a href="#associations">Associations</a>
         <a href="#housing-roundup">Housing Roundup</a>
+        <a href="#apply">Apply</a>
         <a href="#contribute">Contribute</a>
     </nav>
 
@@ -554,7 +555,7 @@
         </section>
 
         <!-- Housing Roundup Section -->
-        <section id="housing-roundup" class="contribute-section">
+        <section id="housing-roundup" class="callout-section">
             <h2>Experimental Communities Housing Roundup</h2>
             <p>
                 A curated collection of experimental and intentional communities in London, gathered by folks in the space.
@@ -562,11 +563,30 @@
             <p>
                 This Google Doc compiles various housing communities, co-living spaces, and intentional living arrangements across the city.
             </p>
-            <a class="contribute-cta" href="https://docs.google.com/document/d/1P0l_o4FA6UrgahEPVzMYBfeprK6VOFNUcy_QOufjFak/edit" target="_blank">View Google Doc</a>
+            <a class="callout-cta" href="https://docs.google.com/document/d/1P0l_o4FA6UrgahEPVzMYBfeprK6VOFNUcy_QOufjFak/edit" target="_blank">View Google Doc</a>
+        </section>
+
+        <!-- Apply Section -->
+        <section id="apply" class="callout-section">
+            <h2>Community Living Interest Form</h2>
+            <p>
+                Looking for a place to live in London? Tell us a little about yourself, what you’re looking for and what you need, and we’ll help you find the best matches from the London commuity living spaces.
+            </p>
+            <p>
+                These responses go to a pool that the different communities see. This means that applications are never "rejected", but it also means that you may not get a response if no houses are actively looking to fill available space when you apply. If you want to ensure a response, consider reaching out to a house you're particularly interested in!
+            </p>
+            <p>
+                Haven't made up your mind? Just curious? That's OK, we'd still like to talk to you. 
+            </p>
+            <a class="callout-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSesTq8Y-teIAtOnqLZ0SG6Vp0W4aIlef249tEtvIo4iLtwemg/viewform" target="_blank" style="border-color: var(--color-accent); color: var(--color-accent);">Open Application Form</a>
+            <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+                In the mean time check out the
+                <a href="https://otherwise.london/#housing-roundup" style="color: var(--color-secondary);">housing round up</a>!
+            </p>
         </section>
 
         <!-- Contribute Section -->
-        <section id="contribute" class="contribute-section">
+        <section id="contribute" class="callout-section">
             <h2>Contribute</h2>
             <p>
                 Otherwise London is an open, community-maintained project. If you know a place, space, or group that belongs here,
@@ -594,7 +614,7 @@
                     <span>Commit your changes and open a pull request. Describe the place briefly in the PR description.</span>
                 </li>
             </ol>
-            <a class="contribute-cta" href="https://github.com/otherwiselondon/otherwise-website" target="_blank">View on GitHub</a>
+            <a class="callout-cta" href="https://github.com/otherwiselondon/otherwise-website" target="_blank">View on GitHub</a>
         </section>
     </main>
 
